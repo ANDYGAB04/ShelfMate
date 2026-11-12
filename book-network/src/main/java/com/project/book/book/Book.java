@@ -1,43 +1,37 @@
 package com.project.book.book;
 
+import com.project.book.common.BaseEntity;
+import com.project.book.feedback.Feedback;
+import com.project.book.history.BookTransactionHistory;
+import com.project.book.user.User;
 import jakarta.persistence.*;
-import org.springframework.data.annotation.CreatedBy;
-import org.springframework.data.annotation.CreatedDate;
-import org.springframework.data.annotation.LastModifiedBy;
-import org.springframework.data.annotation.LastModifiedDate;
-import org.springframework.data.jpa.domain.support.AuditingEntityListener;
+import lombok.*;
 
-import java.time.LocalDateTime;
+import java.util.List;
 
+@Getter
+@Setter
+@SuperBuilder
+@AllArgsConstructor
+@NoArgsConstructor
 @Entity
-@EntityListeners(AuditingEntityListener.class)
-public class Book {
+public class Book extends BaseEntity {
 
-    @Id
-    @GeneratedValue
-    private Integer id;
     private String title;
     private String authorName;
     private String isbn;
     private String synopsis;
     private String bookCover;
     private boolean archived;
-    private boolean shareble;
+    private boolean shareable;
 
-    @CreatedDate
-    @Column(nullable = false,updatable = false)
-    private LocalDateTime createdDate;
+    @ManyToOne
+    @JoinColumn(name = "owner_id")
+    private User owner;
 
-    @LastModifiedDate
-    @Column(insertable = false)
-    private LocalDateTime lastModifiedDate;
+    @OneToMany(mappedBy = "book")
+    private List<Feedback> feedbacks;
 
-    @CreatedBy
-    @Column(nullable = false,updatable = false)
-    private Integer createBy;
-
-    @LastModifiedBy
-    @Column(insertable = false)
-    private Integer lastModifiedBy;
-
+    @OneToMany(mappedBy = "book")
+    private List<BookTransactionHistory> histories;
 }

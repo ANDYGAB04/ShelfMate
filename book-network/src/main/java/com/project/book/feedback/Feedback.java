@@ -1,38 +1,22 @@
 package com.project.book.feedback;
 
+import com.project.book.book.Book;
+import com.project.book.common.BaseEntity;
 import jakarta.persistence.*;
-import org.springframework.data.annotation.CreatedBy;
-import org.springframework.data.annotation.CreatedDate;
-import org.springframework.data.annotation.LastModifiedBy;
-import org.springframework.data.annotation.LastModifiedDate;
-import org.springframework.data.jpa.domain.support.AuditingEntityListener;
+import lombok.*;
 
-import java.time.LocalDateTime;
-
+@Getter
+@Setter
+@SuperBuilder
+@AllArgsConstructor
+@NoArgsConstructor
 @Entity
-@EntityListeners(AuditingEntityListener.class)
-public class Feedback {
+public class Feedback extends BaseEntity {
 
-    @Id
-    @GeneratedValue
-    private Integer id;
     private Double note;
     private String comment;
 
-    @CreatedDate
-    @Column(nullable = false,updatable = false)
-    private LocalDateTime createdDate;
-
-    @LastModifiedDate
-    @Column(insertable = false)
-    private LocalDateTime lastModifiedDate;
-
-    @CreatedBy
-    @Column(nullable = false,updatable = false)
-    private Integer createBy;
-
-    @LastModifiedBy
-    @Column(insertable = false)
-    private Integer lastModifiedBy;
-
+    @ManyToOne
+    @JoinColumn(name = "book_id")
+    private Book book;
 }
