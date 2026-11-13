@@ -6,6 +6,7 @@ import com.project.book.history.BookTransactionHistory;
 import com.project.book.user.User;
 import jakarta.persistence.*;
 import lombok.*;
+import lombok.experimental.SuperBuilder;
 
 import java.util.List;
 
