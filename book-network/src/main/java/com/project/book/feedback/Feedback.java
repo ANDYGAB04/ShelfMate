@@ -4,6 +4,7 @@ import com.project.book.book.Book;
 import com.project.book.common.BaseEntity;
 import jakarta.persistence.*;
 import lombok.*;
+import lombok.experimental.SuperBuilder;
 
 @Getter
 @Setter
