@@ -30,7 +30,7 @@ import org.springframework.context.annotation.Configuration;
         servers = {
                 @Server(
                         description = "Local ENV",
-                        url = "http://localhost:8088/api.v1"
+                        url = "http://localhost:8088/api/v1"
                 )
         },
         security = {
