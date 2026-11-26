@@ -20,6 +20,6 @@ export class AuthenticationService {
   }
 
   confirm(token: string) {
-    return this.api.invoke(confirm, {token});
+    return from(this.api.invoke(confirm, {token}));
   }
 }
