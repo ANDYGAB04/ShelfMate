@@ -16,7 +16,7 @@ export class AuthenticationService {
   }
 
   register(body: RegistrationRequest) {
-    return this.api.invoke(register, {body});
+    return from(this.api.invoke(register, {body}));
   }
 
   confirm(token: string) {
