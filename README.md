@@ -217,16 +217,6 @@ The database schema is generated automatically by Hibernate (`ddl-auto: update`)
 
 ---
 
-## Roadmap
-
-- [x] Backend REST API (auth, books, borrowing, feedback)
-- [x] JWT security and email account activation
-- [x] Swagger / OpenAPI documentation
-- [ ] Angular frontend
-- [ ] Generate the frontend API client from the OpenAPI spec
-- [ ] Dockerize the backend and frontend
-- [ ] Unit and integration tests
-
 ---
 
 ## Author
